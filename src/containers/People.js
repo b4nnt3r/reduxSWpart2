@@ -5,7 +5,13 @@ import {connect} from 'react-redux';
 // Import action <<<<<<<<<<<<<<<<<<<<<<<<<<<
 // You will need to import the actions from '/actions'
 // Write your code below:
-
+import {
+  filterWorlds,
+  filterFilms,
+  filterStarships,
+  stateReset,
+  setDetails
+} from '../actions/index';
 
 // Here we import the PeopleList component
 import PeopleList from '../components/People';
