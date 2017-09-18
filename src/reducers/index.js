@@ -27,6 +27,33 @@ function PeopleDataFilter(state = initialState, action) {
   switch (action.type) {
     //CREATE CASES FOR FILTER_WORLDS, FILTER_FILMS, FILTER_STARSHIPS, RESET.
     // Set the state of 'filter' to the action's payload for each.
+      case ActionTypes.FILTER_WORLDS:
+        return update(state, {
+          filter: {
+            $set: action.payload
+          }
+        })
+
+      case ActionTypes.FILTER_FILMS:
+        return update(state, {
+          filter: {
+            $set: action.payload
+          }
+        });
+
+      case ActionTypes.FILTER_STARSHIPS:
+        return update(state, {
+          filter: {
+            $set: action.payload
+          }
+        });
+
+      case ActionTypes.RESET:
+        return update(state, {
+          filter: {
+            $set: action.payload
+          }
+        });
 
 
     default:

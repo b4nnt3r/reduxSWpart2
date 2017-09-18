@@ -18,7 +18,7 @@ class PeopleList extends Component {
     let filterFilms = this.props.filterFilms;
     let filterStarships = this.props.filterStarships;
     let reset = this.props.reset ;
-    let data = this.props.people.slice().sort();
+    let data = this.props.people;
     let List = data.map((people) => {
       let count = data.indexOf(people) + 1;
       let url = people.url;
@@ -48,6 +48,7 @@ class PeopleList extends Component {
         height: "200px",
         width: "200px"
       }
+      console.log('people', people)
       return (
         <div
           key={people.name}
@@ -61,36 +62,22 @@ class PeopleList extends Component {
                 <span className="navbar-brand">Filter by shared:
                 </span>
               </div>
-
-              {/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                FILTER NAV
-                - Each of the following anchor tags needs an onClick in order to call the actions
-                needs to filter the data by world, film, and starship.
-                - We did one for you already!
-                - You will have to call:
-                   'filterFilms' (pass in filmsList and key)
-                   'filterStarships' (pass in starships and key)
-                   'stateReset' (no parameters needed)
-                 - The parameters are needed by your actions in order to pass them to the
-                 reducers and process the filters.
-                <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/}
-
-                <ul className="nav navbar-nav">
-                  <li>
-                    <a onClick={() => filterWorlds(people.homeworld, 'homeworld')}>Worlds</a>
-                  </li>
-                  <li>
-                    <a onClick={() => filterFilms(people.films, 'film')}>Films</a>
-                  </li>
-                  <li>
-                    <a onClick={() => filterStarships(people.starships, 'starship')}>Starships</a>
-                  </li>
-                  <li>
-                    <a className="active" onClick={() => reset()}>
-                      View All
-                    </a>
-                  </li>
-                </ul>
+              <ul className="nav navbar-nav">
+                <li>
+                  <a onClick={() => filterWorlds(people.homeworld, 'homeworld')}>Worlds</a>
+                </li>
+                <li>
+                  <a onClick={() => filterFilms(people.films, 'film')}>Films</a>
+                </li>
+                <li>
+                  <a onClick={() => filterStarships(people.starships, 'starship')}>Starships</a>
+                </li>
+                <li>
+                  <a className="active" onClick={() => reset()}>
+                    View All
+                  </a>
+                </li>
+              </ul>
               <span className="navbar-brand pull-right">
                 {count}
                 / {this.props.people.length}

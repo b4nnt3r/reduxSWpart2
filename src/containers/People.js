@@ -44,12 +44,45 @@ class People extends Component {
 function mapStateToProps(state) {
   // What is returned will show up as PROPS inside of the PeopleList component.
   // Inside of this function we generally return an object.
-  return {
-    people: state.people,
-    dataFilter: state.dataFilter,
-    setDetails: state.setDetails
-  };
-}
+  console.log('state', state)
+  let data;
+  if (state.people.filter.key === "homeworld") {
+    let endpoint = state.people.filter.endpoint;
+    let match = state.people.peopleData.filter((matchedWorlds) => {
+      return matchedWorlds.homeworld === endpoint
+    });
+    data = match;
+  } else if (state.people.filter.key === "film") {
+    let endpoint = state.people.filter.endpoints;
+    console.log('end', endpoint)
+    let match = state.people.peopleData.filter((matchedFilms) => {
+      let films = matchedFilms.films;
+      return films.filter((item) => {
+        return item;
+      }).length === endpoint.length;
+    });
+    data = match;
+  } else if (state.people.filter.key === "starship") {
+    let endpoint = state.people.filter.endpoints;
+    let match = state.people.peopleData.filter((matchedStarships) => {
+      let starships = matchedStarships.starships;
+      return starships.filter((item) => {
+        return item;
+      }).length === endpoint.length;
+    });
+    data = match;
+
+  } else if (state.people.filter.key === "all") {
+    data = state.people.peopleData;
+  } else {
+    data = state.people.peopleData;
+  }
+    return {
+      people: data,
+      stateExample: state.stateExample,
+      setDetails: state.setDetails
+    };
+  }
 
 // Here we map the component's actions <<<<<<<<<<<<<<<<<<<<<<<<<<
 function mapDispatchToProps(dispatch) {
