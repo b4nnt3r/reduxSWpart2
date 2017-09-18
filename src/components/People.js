@@ -18,7 +18,7 @@ class PeopleList extends Component {
     let filterFilms = this.props.filterFilms;
     let filterStarships = this.props.filterStarships;
     let reset = this.props.reset ;
-    let data = this.props.people;
+    let data = this.props.people.slice().sort();
     let List = data.map((people) => {
       let count = data.indexOf(people) + 1;
       let url = people.url;
