@@ -29,7 +29,7 @@ class People extends Component {
             people={this.props.people}
             filterWorlds={this.props.filterWorlds}
 
-            setDetails={this.props.setDetails}
+            setDetails={this.props.setDetails} />
         </div>
       </div>
     );
