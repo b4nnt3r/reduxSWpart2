@@ -27,3 +27,37 @@ export const setDetails = (data) => {
 
 // Write your code below:
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+export const filterWorlds = (endpoint, key) => {
+  return {
+    type: ActionTypes.FILTER_WORLDS,
+    payload: {endpoint, key}
+  };
+};
+
+export const filterFilms = (endpoint, key) => {
+  endpoint.map((endpoint)=>{
+    return endpoint.key
+  })
+  return {
+    type: ActionTypes.FILTER_FILMS,
+    payload: {endpoints: endpoint, key}
+  };
+};
+
+export const filterStarships = (endpoint, key) => {
+  endpoint.map((endpoint)=>{
+    return endpoint.key
+  })
+  return {
+    type: ActionTypes.FILTER_STARSHIPS,
+    payload: {endpoints: endpoint, key}
+  };
+};
+
+export const stateReset = (key) => {
+  return {
+    type: ActionTypes.RESET,
+    payload: {key}
+  };
+};
