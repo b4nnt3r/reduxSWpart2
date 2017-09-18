@@ -26,16 +26,14 @@ class People extends Component {
     return (
       <div className="row">
         <div className="app-body offset col-lg-10 col-lg-offset-1">
-          {/*
-          >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-          Share all the necessary filter actions with the child component. We did one for you...
-          <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-          */}
+          {/*State is now available via props thanks to Redux! <<<<<<<<<<<<<<<<*/}
           <PeopleList
             people={this.props.people}
             filterWorlds={this.props.filterWorlds}
-
-            setDetails={this.props.setDetails} />
+            reset={this.props.stateReset}
+            filterFilms={this.props.filterFilms}
+            filterStarships={this.props.filterStarships}
+            setDetails={this.props.setDetails}/>
         </div>
       </div>
     );
@@ -63,6 +61,10 @@ function mapDispatchToProps(dispatch) {
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   return bindActionCreators({
     filterWorlds: filterWorlds,
+    filterFilms: filterFilms,
+    filterStarships: filterStarships,
+    stateReset: stateReset ,
+    setDetails: setDetails
   }, dispatch)
 }
 

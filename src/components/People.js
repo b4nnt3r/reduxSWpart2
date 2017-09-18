@@ -14,10 +14,10 @@ class PeopleList extends Component {
 
   render() {
     console.log('REACT VIEW: received state (data and action) from reducer via props. See index.js in "reducers"', this.props)
-    let filter = this.props.filter;
+    let filterWorlds = this.props.filterWorlds;
     let filterFilms = this.props.filterFilms;
     let filterStarships = this.props.filterStarships;
-    let toggle = this.props.stateToggle;
+    let reset = this.props.reset ;
     let data = this.props.people.slice().sort();
     let List = data.map((people) => {
       let count = data.indexOf(people) + 1;
@@ -75,22 +75,22 @@ class PeopleList extends Component {
                  reducers and process the filters.
                 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/}
 
-              <ul className="nav navbar-nav">
-                <li>
-                  <a onClick={() => filter(people.homeworld, 'homeworld')}>Worlds</a>
-                </li>
-                <li>
-                  <a >Films</a>
-                </li>
-                <li>
-                  <a >Starships</a>
-                </li>
-                <li>
-                  <a >
-                    View All
-                  </a>
-                </li>
-              </ul>
+                <ul className="nav navbar-nav">
+                  <li>
+                    <a onClick={() => filterWorlds(people.homeworld, 'homeworld')}>Worlds</a>
+                  </li>
+                  <li>
+                    <a onClick={() => filterFilms(people.films, 'film')}>Films</a>
+                  </li>
+                  <li>
+                    <a onClick={() => filterStarships(people.starships, 'starship')}>Starships</a>
+                  </li>
+                  <li>
+                    <a className="active" onClick={() => reset()}>
+                      View All
+                    </a>
+                  </li>
+                </ul>
               <span className="navbar-brand pull-right">
                 {count}
                 / {this.props.people.length}
